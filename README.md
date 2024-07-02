@@ -13,7 +13,7 @@ Through this system, we add user submitted context through Retrieval Augmented G
 
 ![image_1](https://github.com/lewisExternal/AI-Grant-Writer-Tool/assets/81447748/eb5fd739-ee93-4735-9c74-9e60359e536c)
 
-Read the Medium article [here](TBD) 
+Read the Medium article [here](https://medium.com/@ljamesdatascience/ai-grant-application-writer-autogen-postgresql-rag-langchain-fastapi-and-streamlit-93ba439dcb7d) 
 
 ## Run Locally  
 
