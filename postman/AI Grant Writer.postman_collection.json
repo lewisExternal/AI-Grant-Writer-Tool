@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "4ddbc088-2d5e-4e81-b73e-b987f7af9af2",
+		"name": "AI Grant Writer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15801702"
+	},
+	"item": [
+		{
+			"name": "Post Construct Agent Group Chat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "qa_problem",
+							"value": "\"hat is autogen?",
+							"type": "text"
+						},
+						{
+							"key": "context",
+							"value": "None",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/construct_agent_group_chat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"construct_agent_group_chat"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

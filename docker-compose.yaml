@@ -1,0 +1,66 @@
+version: '3.4'
+
+services:
+  fastapi:
+    container_name: fastapi
+    build:
+      context: ./fastapi
+      dockerfile: ./Dockerfile
+    ports:
+      - "80:80"
+    stdin_open: true   
+    tty: true   
+    volumes:
+     - ./output:/output
+     - ./doc_store:/doc_store
+    environment:
+      - DOCKER_RUNNING=true
+      - OPENAI_API_KEY
+    depends_on: 
+      db:
+        condition: service_healthy
+    env_file:
+      - ./config/.env
+    healthcheck:
+      test: wget --no-verbose -O /dev/null --tries=1 http://localhost:80/healthcheck || exit 1
+      interval: 10s
+      timeout: 5s 
+      
+  db:
+    hostname: db
+    image: pgvector/pgvector:pg15
+    ports:
+     - 5432:5432
+    # restart: always
+    environment:
+      POSTGRES_DB: vectordb
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpwd
+      PGUSER: testuser
+      POSTGRES_HOST_AUTH_METHOD: trust
+      PGDATA: /var/lib/postgresql/data/
+    volumes:
+      - ./pgvector/output/database:/var/lib/postgresql/data
+      - ./pgvector/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d vectordb -U testuser"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  streamlit-app:
+    container_name: streamlit-app
+    build:
+      context: ./streamlit
+      dockerfile: ./Dockerfile
+    ports:
+      - "8501:8501"
+    stdin_open: true   
+    tty: true   
+    volumes:
+     - ./output:/output
+    environment:
+      DOCKER_RUNNING: true
+    depends_on: 
+      fastapi:
+        condition: service_healthy
