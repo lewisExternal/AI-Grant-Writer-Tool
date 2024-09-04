@@ -168,4 +168,4 @@ doc_store/
 
 __pycache__/
 tmp/
-# *.env
+temp.env
