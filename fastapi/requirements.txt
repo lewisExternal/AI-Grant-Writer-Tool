@@ -10,7 +10,7 @@ markdownify==0.12.1
 pypdf==4.2.0
 sentence-transformers==2.7.0
 ipython==8.18.1
-pyautogen[retrievechat]==0.2.27
+ag2[retrievechat]==0.2.27
 pgvector==0.2.5
 psycopg==3.1.18
 psycopg[binary,pool]
