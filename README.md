@@ -44,3 +44,5 @@ Requires the following
 * https://arxiv.org/pdf/2308.08155
 * https://arxiv.org/pdf/2403.10131
 
+## Notice 
+Migrated from pyautogen to ag2 Library 19/07/2025 
