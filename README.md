@@ -45,4 +45,5 @@ Requires the following
 * https://arxiv.org/pdf/2403.10131
 
 ## Notice 
-Migrated from pyautogen to ag2 Library 19/07/2025 
+Migrated from pyautogen to ag2 Library 19/07/2025
+https://github.com/lewisExternal/AI-Grant-Writer-Tool/pull/1
